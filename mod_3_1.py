@@ -10,7 +10,7 @@ def count_calls():
 
 def string_info(string):
     stroka = str(string)
-    result = (len(stroka),stroka.lower(), stroka.lower())
+    result = (len(stroka),stroka.upper(), stroka.lower())
     count_calls()
     return result
 
