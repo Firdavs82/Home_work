@@ -10,29 +10,23 @@ class Product:
         return (f' {self.name}, {self.weight}, {self.category}')
 
 class Shop:
-    def __init__(self, __file_name = 'product.txt'):
-        super().__init__()
-        self.__file_name = __file_name
+    __file_name = 'product.txt'
 
     def get_product(self):
-        file = open(self.__file_name, 'r')
-        pprint(file.read())
+        file = open(self.__file_name, 'r+')
+        prod_str = file.read()
         file.close()
-        # print(f' {self.__file_name}')
+        return prod_str
 
     def add(self,*product):
-        self.get_product()
-        file = open(self.__file_name, 'w')
-        f = file.write(str(product))
-        file.close()
+        file_get = self.get_product()
         for i in product:
-           if i in product:
-                print(f'Продукт {i} уже есть в магазине')
-                #file.close()
-           else:
+            if self.get_product().find(f'{i.name},') == -1:
                 file = open(self.__file_name, 'a')
-                file.write(f'\n{i}')
+                file.write(f'{i}\n')
                 file.close()
+            else:
+                print(f'Продутк {i.name} уже есть в магазине')
 
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
