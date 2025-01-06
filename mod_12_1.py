@@ -13,5 +13,5 @@ class Runner:
         return self.name
 
 if __name__ == '__main__':
-    man = Runner('tom')
+    man = Runner('Tom')
     print(man)
