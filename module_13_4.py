@@ -13,6 +13,10 @@ class UserState(StatesGroup):
     growth = State()
     weight = State()
 
+@dp.message_handler(commands=['start'])
+async def start_message(message):
+    await message.answer('Привет! Я бот помогающий твоему здоровью.')
+
 @dp.message_handler(text=['Calories'])
 async def set_age(message):
     await message.answer('Введите свой возраст:')
