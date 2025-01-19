@@ -5,16 +5,23 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import KeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 import asyncio
 
-api = ''
+api = 'xxx'
 bot = Bot(token=api)
 dp = Dispatcher(bot=bot, storage=MemoryStorage())
 
-kb = ReplyKeyboardMarkup()
-button2 = KeyboardButton(text="Рассчитать")
-button = KeyboardButton(text="Информация")
-
-kb.insert(button2)
-kb.insert(button)
+kb = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text= "Расчитать"),
+            KeyboardButton(text="Информация")
+        ]
+    ],resize_keyboard=True
+)
+# button2 = KeyboardButton(text="Рассчитать")
+# button = KeyboardButton(text="Информация")
+#
+# kb.insert(button2)
+# kb.insert(button)
 
 class UserState(StatesGroup):
     age = State()
