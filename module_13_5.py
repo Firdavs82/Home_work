@@ -23,7 +23,7 @@ class UserState(StatesGroup):
 
 @dp.message_handler(text= "Информация")
 async def info(message):
-    await message.answer('Данный бот помогает расчитать норму калорий в день для мужчин и женщин')
+    await message.answer('Данный бот помогает расчитать норму калорий в день для мужчин')
 
 @dp.message_handler(commands=['start'])
 async def start_message(message):
@@ -54,9 +54,7 @@ async def send_calories(message, state):
     weight = float(data['weight'])
     growth = float(data['growth'])
     calories_man = 10 * weight + 6.25 * growth - 5 * age + 5
-    calories_woman = 10 * weight + 6.25 * growth - 5 * age -161
-    await message.answer(f'Норма калорий мужчин: {calories_man} ')
-    await message.answer(f'Норма калорий женщин: {calories_woman} ')
+    await message.answer(f'Ваша норма калорий: {calories_man} ')
     await state.finish()
 
 if __name__ == '__main__':
